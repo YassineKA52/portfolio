@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Yassine Kadiri, Software Engineer</title>
+<meta name="description" content="Portfolio de Yassine (Faiko) Kadiri, étudiant en génie logiciel à l'ÉTS.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#111214;
+    --ink-soft:#4a4d54;
+    --line:#e4e4e6;
+    --bg:#ffffff;
+    --panel:#fafafa;
+    --accent:#2653e8;
+    --ok:#16a34a;
+    --dev:#e6a700;
+    --proto:#8b8f98;
+    --radius:10px;
+    --mono: 'JetBrains Mono', monospace;
+    --display: 'Space Grotesk', sans-serif;
+    --body: 'Inter', sans-serif;
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0; background:var(--bg); color:var(--ink);
+    font-family:var(--body); line-height:1.5;
+    -webkit-font-smoothing:antialiased;
+  }
+  a{color:inherit;}
+  .wrap{max-width:920px; margin:0 auto; padding:0 24px;}
+
+  /* ---- status bar ---- */
+  .statusbar{
+    border-bottom:1px solid var(--line);
+    background:var(--panel);
+    font-family:var(--mono);
+    font-size:12.5px;
+    letter-spacing:.02em;
+    position:sticky; top:0; z-index:50;
+  }
+  .statusbar .wrap{
+    display:flex; align-items:center; justify-content:space-between;
+    padding-top:10px; padding-bottom:10px; flex-wrap:wrap; gap:8px;
+  }
+  .dot{
+    width:8px; height:8px; border-radius:50%; background:var(--ok);
+    display:inline-block; margin-right:8px;
+    box-shadow:0 0 0 3px rgba(22,163,74,.15);
+    animation:pulse 2.4s infinite;
+  }
+  @keyframes pulse{
+    0%,100%{box-shadow:0 0 0 3px rgba(22,163,74,.15);}
+    50%{box-shadow:0 0 0 5px rgba(22,163,74,.06);}
+  }
+  .statusbar nav a{
+    margin-left:18px; text-decoration:none; color:var(--ink-soft);
+    border-bottom:1px solid transparent;
+  }
+  .statusbar nav a:hover{color:var(--ink); border-color:var(--ink);}
+
+  /* ---- hero ---- */
+  header.hero{padding:88px 0 56px; border-bottom:1px solid var(--line);}
+  .eyebrow{
+    font-family:var(--mono); font-size:12.5px; color:var(--accent);
+    text-transform:uppercase; letter-spacing:.08em; margin:0 0 18px;
+    display:flex; align-items:center; gap:8px;
+  }
+  h1{
+    font-family:var(--display); font-weight:700;
+    font-size:clamp(34px,5.4vw,56px); line-height:1.05; margin:0 0 18px; letter-spacing:-0.01em;
+  }
+  .hero p.lede{font-size:18px; color:var(--ink-soft); max-width:560px; margin:0 0 32px;}
+  .cta-row{display:flex; gap:12px; flex-wrap:wrap;}
+  .btn{
+    font-family:var(--mono); font-size:13px; text-decoration:none;
+    padding:11px 18px; border-radius:var(--radius); border:1px solid var(--ink);
+    color:var(--ink); transition:.15s ease;
+  }
+  .btn.primary{background:var(--ink); color:#fff;}
+  .btn:hover{transform:translateY(-1px);}
+  .btn.primary:hover{background:#000;}
+  .btn.ghost:hover{background:var(--panel);}
+
+  /* ---- section shell ---- */
+  section{padding:64px 0; border-bottom:1px solid var(--line);}
+  section:last-of-type{border-bottom:none;}
+  .sec-head{display:flex; align-items:baseline; gap:14px; margin-bottom:32px;}
+  .sec-num{font-family:var(--mono); font-size:12.5px; color:var(--ink-soft);}
+  h2{font-family:var(--display); font-size:24px; margin:0; letter-spacing:-.01em;}
+
+  /* ---- about ---- */
+  .about-grid{display:grid; grid-template-columns:1.4fr 1fr; gap:40px;}
+  .about-grid p{color:var(--ink-soft); margin:0 0 14px;}
+  .facts{font-family:var(--mono); font-size:13px; border:1px solid var(--line); border-radius:var(--radius); padding:18px; background:var(--panel); align-self:start;}
+  .facts div{display:flex; justify-content:space-between; padding:6px 0; border-bottom:1px dashed var(--line);}
+  .facts div:last-child{border-bottom:none;}
+  .facts span:first-child{color:var(--ink-soft);}
+
+  @media(max-width:700px){.about-grid{grid-template-columns:1fr;}}
+
+  /* ---- projects ---- */
+  .module{
+    border:1px solid var(--line); border-radius:var(--radius);
+    padding:22px 24px; margin-bottom:16px; background:#fff;
+    transition:.15s ease;
+  }
+  .module:hover{border-color:#c9c9cc;}
+  .module-top{display:flex; align-items:center; justify-content:space-between; gap:12px; flex-wrap:wrap; margin-bottom:8px;}
+  .module-name{font-family:var(--display); font-weight:600; font-size:18px;}
+  .badge{
+    font-family:var(--mono); font-size:11px; text-transform:uppercase; letter-spacing:.05em;
+    padding:3px 9px; border-radius:99px; display:inline-flex; align-items:center; gap:6px;
+  }
+  .badge .dot{width:6px; height:6px; margin:0; animation:none; box-shadow:none;}
+  .badge.shipped{background:#eafaf0; color:var(--ok);}
+  .badge.shipped .dot{background:var(--ok);}
+  .badge.dev{background:#fdf6e3; color:#8a6400;}
+  .badge.dev .dot{background:var(--dev);}
+  .badge.proto{background:#f2f2f3; color:#5c5f66;}
+  .badge.proto .dot{background:var(--proto);}
+  .module p.desc{color:var(--ink-soft); margin:0 0 14px; font-size:14.5px;}
+  .tags{display:flex; flex-wrap:wrap; gap:6px; margin-bottom:14px;}
+  .tag{font-family:var(--mono); font-size:11.5px; color:var(--ink-soft); background:var(--panel); border:1px solid var(--line); padding:3px 8px; border-radius:6px;}
+  .module-links a{font-family:var(--mono); font-size:12.5px; text-decoration:none; color:var(--accent); margin-right:16px;}
+  .module-links a:hover{text-decoration:underline;}
+  .module-links span.disabled{font-family:var(--mono); font-size:12.5px; color:#a8a8ac;}
+
+  /* ---- skills ---- */
+  .skill-group{margin-bottom:18px;}
+  .skill-group h3{font-family:var(--mono); font-size:12px; text-transform:uppercase; letter-spacing:.06em; color:var(--ink-soft); margin:0 0 10px; font-weight:500;}
+  .skill-tags{display:flex; flex-wrap:wrap; gap:8px;}
+  .skill-tags .tag{background:#fff;}
+
+  /* ---- experience ---- */
+  .job{display:grid; grid-template-columns:150px 1fr; gap:20px; padding:16px 0; border-bottom:1px dashed var(--line);}
+  .job:last-child{border-bottom:none;}
+  .job time{font-family:var(--mono); font-size:12.5px; color:var(--ink-soft);}
+  .job h3{font-family:var(--display); font-size:16px; margin:0 0 4px;}
+  .job p{margin:0; color:var(--ink-soft); font-size:14.5px;}
+  @media(max-width:600px){.job{grid-template-columns:1fr; gap:4px;}}
+
+  /* ---- footer ---- */
+  footer{padding:48px 0 64px; text-align:center;}
+  footer .dot{width:6px; height:6px; margin-right:6px;}
+  footer p{font-family:var(--mono); font-size:12.5px; color:var(--ink-soft); margin:0 0 18px;}
+  .foot-links a{text-decoration:none; margin:0 10px; font-family:var(--mono); font-size:13px; border-bottom:1px solid var(--line);}
+  .foot-links a:hover{border-color:var(--ink);}
+</style>
+</head>
+<body>
+
+<div class="statusbar">
+  <div class="wrap">
+    <div><span class="dot"></span>TOUS LES SYSTÈMES SONT OPÉRATIONNELS, DISPONIBLE POUR STAGE AUTOMNE 2026</div>
+    <nav>
+      <a href="#about">à propos</a><a href="#projects">projets</a><a href="#skills">compétences</a><a href="#experience">expérience</a><a href="#contact">contact</a>
+    </nav>
+  </div>
+</div>
+
+<header class="hero">
+  <div class="wrap">
+    <p class="eyebrow"><span class="dot" style="animation:none;box-shadow:none;"></span>en ligne depuis: 2e année @ ÉTS</p>
+    <h1>Yassine Kadiri</h1>
+    <p class="lede">Étudiant en génie logiciel à l'ÉTS Montréal. Je construis des systèmes qui tournent, bots Discord, APIs, plateformes web complètes.</p>
+    <div class="cta-row">
+      <a class="btn primary" href="#projects">Voir les projets</a>
+      <a class="btn ghost" href="https://github.com/YassineKA52" target="_blank" rel="noopener">GitHub</a>
+      <a class="btn ghost" href="mailto:yassine.kadiri.1@ens.etsmtl.ca">Contact</a>
+    </div>
+  </div>
+</header>
+
+<section id="about">
+  <div class="wrap">
+    <div class="sec-head"><span class="sec-num">01</span><h2>About</h2></div>
+    <div class="about-grid">
+      <div>
+        <p>Je suis en 2e année de génie logiciel à l'École de technologie supérieure (ÉTS), à Montréal. J'aime construire des choses qui doivent vraiment fonctionner en production, pas juste en démo, que ce soit un bot Discord utilisé par du vrai monde ou une plateforme web complète.</p>
+        <p>Côté expérience, j'ai été agent de location chez Alset Cars et auxiliaire d'enseignement à l'ÉTS. Présentement en recherche active de stage pour l'automne.</p>
+      </div>
+      <div class="facts">
+        <div><span>rôle</span><span>étudiant en génie logiciel</span></div>
+        <div><span>école</span><span>ÉTS Montréal</span></div>
+        <div><span>statut</span><span>recherche stage automne</span></div>
+        <div><span>stack</span><span>python / ts / java</span></div>
+        <div><span>lieu</span><span>montréal, qc</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="projects">
+  <div class="wrap">
+    <div class="sec-head"><span class="sec-num">02</span><h2>Projets</h2></div>
+
+    <div class="module">
+      <div class="module-top">
+        <span class="module-name">Assemblor</span>
+        <span class="badge dev"><span class="dot"></span>en dev</span>
+      </div>
+      <p class="desc">Plateforme SaaS bâtie sur Discord pour la gestion d'assemblées délibérantes au Québec (syndicats de copropriété, coopératives d'habitation, OBNL), alignée sur le cadre du Code Morin.</p>
+      <div class="tags">
+        <span class="tag">Python / FastAPI</span><span class="tag">Next.js</span><span class="tag">PostgreSQL</span><span class="tag">Redis</span><span class="tag">Railway</span><span class="tag">Discord bot</span>
+      </div>
+      <div class="module-links">
+        <span class="disabled">repo privé, demande sur invitation</span>
+      </div>
+    </div>
+
+    <div class="module">
+      <div class="module-top">
+        <span class="module-name">Discord Monthly Recap Bot</span>
+        <span class="badge shipped"><span class="dot"></span>livré</span>
+      </div>
+      <p class="desc">Bot Discord qui génère un "wrapped" mensuel automatique, activité, stats et récap visuel pour un serveur.</p>
+      <div class="tags"><span class="tag">Python</span><span class="tag">Discord.py</span></div>
+      <div class="module-links">
+        <a href="https://github.com/YassineKA52/Discord-Wrapped" target="_blank" rel="noopener">→ code</a>
+      </div>
+    </div>
+
+    <div class="module">
+      <div class="module-top">
+        <span class="module-name">Find My Team (LunarCovenant)</span>
+        <span class="badge shipped"><span class="dot"></span>livré, projet scolaire</span>
+      </div>
+      <p class="desc">Plateforme web/mobile pour trouver des coéquipiers de jeu ou de sport. Projet d'équipe (6 personnes), responsable du schéma SQL, des routes PHP côté serveur, et de la sécurité (bcrypt, requêtes préparées).</p>
+      <div class="tags"><span class="tag">PHP</span><span class="tag">SQL</span><span class="tag">bcrypt</span></div>
+      <div class="module-links">
+        <span class="disabled">repo scolaire, lien sur demande</span>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<section id="skills">
+  <div class="wrap">
+    <div class="sec-head"><span class="sec-num">03</span><h2>Compétences</h2></div>
+
+    <div class="skill-group">
+      <h3>Langages</h3>
+      <div class="skill-tags">
+        <span class="tag">Python</span><span class="tag">Java</span><span class="tag">TypeScript</span><span class="tag">JavaScript</span><span class="tag">PHP</span><span class="tag">SQL</span>
+      </div>
+    </div>
+    <div class="skill-group">
+      <h3>Frameworks & libs</h3>
+      <div class="skill-tags">
+        <span class="tag">FastAPI</span><span class="tag">Django</span><span class="tag">Spring Security</span><span class="tag">Hibernate</span><span class="tag">React / Next.js</span><span class="tag">JUnit</span><span class="tag">Mockito</span><span class="tag">Discord.py</span>
+      </div>
+    </div>
+    <div class="skill-group">
+      <h3>Infra & outils</h3>
+      <div class="skill-tags">
+        <span class="tag">PostgreSQL</span><span class="tag">Redis</span><span class="tag">Docker</span><span class="tag">Railway</span><span class="tag">Vercel</span><span class="tag">Git</span><span class="tag">CI/CD</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="experience">
+  <div class="wrap">
+    <div class="sec-head"><span class="sec-num">04</span><h2>Expérience</h2></div>
+
+    <div class="job">
+      <time>Alset Cars</time>
+      <div><h3>Agent de location</h3><p>Service client et gestion de flotte.</p></div>
+    </div>
+  </div>
+</section>
+
+<footer id="contact">
+  <div class="wrap">
+    <p><span class="dot" style="background:var(--ok); animation:none; box-shadow:none;"></span>status: disponible pour stage, automne 2026</p>
+    <div class="foot-links">
+      <a href="mailto:yassine.kadiri.1@ens.etsmtl.ca">courriel</a>
+      <a href="https://github.com/YassineKA52" target="_blank" rel="noopener">github</a>
+      <a href="https://www.linkedin.com/in/yassineka/?skipRedirect=true" target="_blank" rel="noopener">linkedin</a>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
