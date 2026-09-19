@@ -1,10 +1,10 @@
 <!DOCTYPE html>
-<html lang="fr">
+<html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Yassine Kadiri, Software Engineer</title>
-<meta name="description" content="Portfolio de Yassine (Faiko) Kadiri, étudiant en génie logiciel à l'ÉTS.">
+<meta name="description" content="Portfolio of Yassine (Faiko) Kadiri, software engineering student at ÉTS Montreal.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
@@ -111,6 +111,8 @@
   .module:hover{border-color:#c9c9cc;}
   .module-top{display:flex; align-items:center; justify-content:space-between; gap:12px; flex-wrap:wrap; margin-bottom:8px;}
   .module-name{font-family:var(--display); font-weight:600; font-size:18px;}
+  .module-meta{display:flex; align-items:center; gap:10px; flex-wrap:wrap;}
+  .module-date{font-family:var(--mono); font-size:11.5px; color:var(--ink-soft);}
   .badge{
     font-family:var(--mono); font-size:11px; text-transform:uppercase; letter-spacing:.05em;
     padding:3px 9px; border-radius:99px; display:inline-flex; align-items:center; gap:6px;
@@ -155,20 +157,20 @@
 
 <div class="statusbar">
   <div class="wrap">
-    <div><span class="dot"></span>TOUS LES SYSTÈMES SONT OPÉRATIONNELS, DISPONIBLE POUR STAGE AUTOMNE 2026</div>
+    <div><span class="dot"></span>ALL SYSTEMS OPERATIONAL, AVAILABLE FOR WINTER 2027 INTERNSHIP</div>
     <nav>
-      <a href="#about">à propos</a><a href="#projects">projets</a><a href="#skills">compétences</a><a href="#experience">expérience</a><a href="#contact">contact</a>
+      <a href="#about">about</a><a href="#projects">projects</a><a href="#skills">skills</a><a href="#experience">experience</a><a href="#contact">contact</a>
     </nav>
   </div>
 </div>
 
 <header class="hero">
   <div class="wrap">
-    <p class="eyebrow"><span class="dot" style="animation:none;box-shadow:none;"></span>en ligne depuis: 2e année @ ÉTS</p>
+    <p class="eyebrow"><span class="dot" style="animation:none;box-shadow:none;"></span>online since: 2nd year @ ÉTS</p>
     <h1>Yassine Kadiri</h1>
-    <p class="lede">Étudiant en génie logiciel à l'ÉTS Montréal. Je construis des systèmes qui tournent, bots Discord, APIs, plateformes web complètes.</p>
+    <p class="lede">Software engineering student at ÉTS Montreal. I build systems that actually run: RAG pipelines, Discord bots, REST APIs, full-stack platforms.</p>
     <div class="cta-row">
-      <a class="btn primary" href="#projects">Voir les projets</a>
+      <a class="btn primary" href="#projects">View projects</a>
       <a class="btn ghost" href="https://github.com/YassineKA52" target="_blank" rel="noopener">GitHub</a>
       <a class="btn ghost" href="mailto:yassine.kadiri.1@ens.etsmtl.ca">Contact</a>
     </div>
@@ -180,15 +182,15 @@
     <div class="sec-head"><span class="sec-num">01</span><h2>About</h2></div>
     <div class="about-grid">
       <div>
-        <p>Je suis en 2e année de génie logiciel à l'École de technologie supérieure (ÉTS), à Montréal. J'aime construire des choses qui doivent vraiment fonctionner en production, pas juste en démo, que ce soit un bot Discord utilisé par du vrai monde ou une plateforme web complète.</p>
-        <p>Côté expérience, j'ai été agent de location chez Alset Cars. Présentement en recherche active de stage pour l'automne.</p>
+        <p>I'm a 2nd-year Software Engineering student at École de technologie supérieure (ÉTS) in Montreal. I like building things that actually have to work in production, not just in a demo, whether that's a RAG system that cites its sources or a Discord bot used by a real community.</p>
+        <p>On the experience side, I've worked as a rental agent at Alset Cars. Currently looking for a winter internship.</p>
       </div>
       <div class="facts">
-        <div><span>rôle</span><span>étudiant en génie logiciel</span></div>
-        <div><span>école</span><span>ÉTS Montréal</span></div>
-        <div><span>statut</span><span>recherche stage automne</span></div>
+        <div><span>role</span><span>software engineering student</span></div>
+        <div><span>school</span><span>ÉTS Montreal</span></div>
+        <div><span>status</span><span>looking for winter internship</span></div>
         <div><span>stack</span><span>python / ts / java</span></div>
-        <div><span>lieu</span><span>montréal, qc</span></div>
+        <div><span>location</span><span>montreal, qc</span></div>
       </div>
     </div>
   </div>
@@ -196,29 +198,52 @@
 
 <section id="projects">
   <div class="wrap">
-    <div class="sec-head"><span class="sec-num">02</span><h2>Projets</h2></div>
+    <div class="sec-head"><span class="sec-num">02</span><h2>Projects</h2></div>
 
     <div class="module">
       <div class="module-top">
-        <span class="module-name">Assemblor</span>
-        <span class="badge dev"><span class="dot"></span>en dev</span>
+        <span class="module-name">Courag</span>
+        <div class="module-meta">
+          <span class="module-date">September 2026</span>
+          <span class="badge shipped"><span class="dot"></span>shipped</span>
+        </div>
       </div>
-      <p class="desc">Plateforme SaaS bâtie sur Discord pour la gestion d'assemblées délibérantes au Québec (syndicats de copropriété, coopératives d'habitation, OBNL), alignée sur le cadre du Code Morin.</p>
+      <p class="desc">A retrieval-augmented generation (RAG) system that answers questions on course PDFs and cites the exact page each answer came from. Combines pgvector cosine similarity with PostgreSQL full-text search via reciprocal rank fusion, runs multilingual text embeddings locally through ONNX Runtime (cutting the deployed image from ~3&nbsp;GB to 250&nbsp;MB), and streams grounded answers from the Anthropic Claude API over server-sent events.</p>
       <div class="tags">
-        <span class="tag">Python / FastAPI</span><span class="tag">Next.js</span><span class="tag">PostgreSQL</span><span class="tag">Redis</span><span class="tag">Railway</span><span class="tag">Discord bot</span>
+        <span class="tag">Python / FastAPI</span><span class="tag">PostgreSQL / pgvector</span><span class="tag">Next.js</span><span class="tag">Docker</span><span class="tag">ONNX Runtime</span>
       </div>
       <div class="module-links">
-        <span class="disabled">repo privé, demande sur invitation</span>
+        <a href="https://github.com/YassineKA52/courag" target="_blank" rel="noopener">→ code</a>
       </div>
     </div>
 
     <div class="module">
       <div class="module-top">
-        <span class="module-name">Discord Monthly Recap Bot</span>
-        <span class="badge shipped"><span class="dot"></span>livré</span>
+        <span class="module-name">Jaydan Core</span>
+        <div class="module-meta">
+          <span class="module-date">Jul – Sep 2026</span>
+          <span class="badge shipped"><span class="dot"></span>shipped</span>
+        </div>
       </div>
-      <p class="desc">Bot Discord qui génère un "wrapped" mensuel automatique, activité, stats et récap visuel pour un serveur.</p>
-      <div class="tags"><span class="tag">Python</span><span class="tag">Discord.py</span></div>
+      <p class="desc">A native desktop hub built with PySide6 that launches a local FastAPI engine as a subprocess and drives it through an OAuth2-secured REST API, backed by a PostgreSQL database with a full audit log. Includes a PDF-parsing pipeline that extracts structured data (participants, institution, prior resolutions) from real meeting-minutes documents and surfaces it through an editable review screen, plus a Zoom OAuth2 connector and a pytest suite of 75+ unit tests.</p>
+      <div class="tags">
+        <span class="tag">Python / FastAPI</span><span class="tag">PySide6</span><span class="tag">PostgreSQL</span><span class="tag">OAuth2</span><span class="tag">Zoom API</span>
+      </div>
+      <div class="module-links">
+        <span class="disabled">private repo, available on request</span>
+      </div>
+    </div>
+
+    <div class="module">
+      <div class="module-top">
+        <span class="module-name">Discord Wrapped</span>
+        <div class="module-meta">
+          <span class="module-date">May – Jul 2026</span>
+          <span class="badge shipped"><span class="dot"></span>shipped</span>
+        </div>
+      </div>
+      <p class="desc">A Discord bot that collects and analyzes server-wide member activity for a 50+ member community, with real-time tracking of messages and voice-channel participation. Exposes stats through a FastAPI RESTful API and uses the Anthropic Claude API to generate personalized, data-driven monthly recaps.</p>
+      <div class="tags"><span class="tag">Python</span><span class="tag">discord.py</span><span class="tag">FastAPI</span><span class="tag">SQLite</span></div>
       <div class="module-links">
         <a href="https://github.com/YassineKA52/Discord-Wrapped" target="_blank" rel="noopener">→ code</a>
       </div>
@@ -226,13 +251,16 @@
 
     <div class="module">
       <div class="module-top">
-        <span class="module-name">Find My Team (LunarCovenant)</span>
-        <span class="badge shipped"><span class="dot"></span>livré, projet scolaire</span>
+        <span class="module-name">Find My Team</span>
+        <div class="module-meta">
+          <span class="module-date">Sep – Dec 2025</span>
+          <span class="badge shipped"><span class="dot"></span>shipped, school project</span>
+        </div>
       </div>
-      <p class="desc">Plateforme web/mobile pour trouver des coéquipiers de jeu ou de sport. Projet d'équipe (6 personnes), responsable du schéma SQL, des routes PHP côté serveur, et de la sécurité (bcrypt, requêtes préparées).</p>
-      <div class="tags"><span class="tag">PHP</span><span class="tag">SQL</span><span class="tag">bcrypt</span></div>
+      <p class="desc">A full-stack platform for finding teammates for gaming or sports. Designed the relational database schema and UML class diagrams, built the TypeScript backend services (containerized with Docker), and shipped a responsive JavaScript frontend for team discovery and management.</p>
+      <div class="tags"><span class="tag">TypeScript</span><span class="tag">JavaScript</span><span class="tag">Docker</span></div>
       <div class="module-links">
-        <span class="disabled">repo scolaire, lien sur demande</span>
+        <span class="disabled">school repo, link on request</span>
       </div>
     </div>
 
@@ -241,24 +269,42 @@
 
 <section id="skills">
   <div class="wrap">
-    <div class="sec-head"><span class="sec-num">03</span><h2>Compétences</h2></div>
+    <div class="sec-head"><span class="sec-num">03</span><h2>Skills</h2></div>
 
     <div class="skill-group">
-      <h3>Langages</h3>
+      <h3>Languages</h3>
       <div class="skill-tags">
-        <span class="tag">Python</span><span class="tag">Java</span><span class="tag">TypeScript</span><span class="tag">JavaScript</span><span class="tag">PHP</span><span class="tag">SQL</span>
+        <span class="tag">Python</span><span class="tag">Java</span><span class="tag">TypeScript</span><span class="tag">JavaScript</span><span class="tag">SQL</span><span class="tag">HTML</span><span class="tag">CSS</span>
       </div>
     </div>
     <div class="skill-group">
-      <h3>Frameworks & libs</h3>
+      <h3>Frameworks</h3>
       <div class="skill-tags">
-        <span class="tag">FastAPI</span><span class="tag">Django</span><span class="tag">Spring Security</span><span class="tag">Hibernate</span><span class="tag">React / Next.js</span><span class="tag">JUnit</span><span class="tag">Mockito</span><span class="tag">Discord.py</span>
+        <span class="tag">FastAPI</span><span class="tag">Next.js</span><span class="tag">React</span><span class="tag">discord.py</span><span class="tag">PySide6</span>
       </div>
     </div>
     <div class="skill-group">
-      <h3>Infra & outils</h3>
+      <h3>Databases</h3>
       <div class="skill-tags">
-        <span class="tag">PostgreSQL</span><span class="tag">Redis</span><span class="tag">Docker</span><span class="tag">Railway</span><span class="tag">Vercel</span><span class="tag">Git</span><span class="tag">CI/CD</span>
+        <span class="tag">PostgreSQL</span><span class="tag">pgvector</span><span class="tag">MySQL</span><span class="tag">SQLite</span><span class="tag">Redis</span>
+      </div>
+    </div>
+    <div class="skill-group">
+      <h3>Tools & platforms</h3>
+      <div class="skill-tags">
+        <span class="tag">Git</span><span class="tag">Docker</span><span class="tag">Railway</span><span class="tag">Vercel</span><span class="tag">Jira</span><span class="tag">IntelliJ IDEA</span><span class="tag">VS Code</span>
+      </div>
+    </div>
+    <div class="skill-group">
+      <h3>APIs, security & testing</h3>
+      <div class="skill-tags">
+        <span class="tag">REST APIs</span><span class="tag">Server-Sent Events</span><span class="tag">Zoom OAuth2 API</span><span class="tag">OAuth 2.0</span><span class="tag">pytest</span><span class="tag">JUnit</span><span class="tag">Mockito</span><span class="tag">Jest</span><span class="tag">Postman</span>
+      </div>
+    </div>
+    <div class="skill-group">
+      <h3>AI & LLM</h3>
+      <div class="skill-tags">
+        <span class="tag">Anthropic API (Claude)</span><span class="tag">RAG</span><span class="tag">vector search</span><span class="tag">text embeddings</span><span class="tag">ONNX Runtime</span>
       </div>
     </div>
   </div>
@@ -266,20 +312,20 @@
 
 <section id="experience">
   <div class="wrap">
-    <div class="sec-head"><span class="sec-num">04</span><h2>Expérience</h2></div>
+    <div class="sec-head"><span class="sec-num">04</span><h2>Experience</h2></div>
 
     <div class="job">
       <time>Alset Cars</time>
-      <div><h3>Agent de location</h3><p>Service client et gestion de flotte.</p></div>
+      <div><h3>Rental Agent</h3><p>Customer service and fleet management.</p></div>
     </div>
   </div>
 </section>
 
 <footer id="contact">
   <div class="wrap">
-    <p><span class="dot" style="background:var(--ok); animation:none; box-shadow:none;"></span>status: disponible pour stage, automne 2026</p>
+    <p><span class="dot" style="background:var(--ok); animation:none; box-shadow:none;"></span>status: available for winter 2027 internship</p>
     <div class="foot-links">
-      <a href="mailto:yassine.kadiri.1@ens.etsmtl.ca">courriel</a>
+      <a href="mailto:yassine.kadiri.1@ens.etsmtl.ca">email</a>
       <a href="https://github.com/YassineKA52" target="_blank" rel="noopener">github</a>
       <a href="https://www.linkedin.com/in/yassineka/?skipRedirect=true" target="_blank" rel="noopener">linkedin</a>
     </div>
